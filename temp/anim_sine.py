@@ -9,6 +9,7 @@ File Description:
 Notes:
     - gif => imagemagick
     - mp4 => ffmpeg
+    - https://towardsdatascience.com/animations-with-matplotlib-d96375c5442c
 
 """
 
