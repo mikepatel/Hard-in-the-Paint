@@ -7,6 +7,8 @@ File Description:
     A tutorial to create a basic animation of a moving sine wave using Matplotlib animation
 
 Notes:
+    - gif => imagemagick
+    - mp4 => ffmpeg
 
 """
 
@@ -18,8 +20,9 @@ from matplotlib.animation import FuncAnimation
 
 
 ################################################################################
+plt.style.use("dark_background")
 fig = plt.figure()
-ax = plt.axes(xlim=(0, 4), ylim=(-2, 2))
+ax = plt.axes(xlim=(0, 4), ylim=(-1.5, 1.5))
 line, = ax.plot([], [], lw=3)
 
 
@@ -37,4 +40,6 @@ def animate(i):
 
 anim = FuncAnimation(fig, animate, init_func=init,
                      frames=200, interval=20, blit=True)
+
+print("Saving gif...")
 anim.save("sine_wave.gif", writer="imagemagick")
