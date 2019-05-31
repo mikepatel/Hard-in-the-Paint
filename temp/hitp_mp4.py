@@ -16,5 +16,12 @@ Notes:
 
 ################################################################################
 # Imports
+import os
 import cv2
 
+
+################################################################################
+input_file = os.path.join(os.getcwd(), "hitp.mp4")
+
+# create VideoCapture object by reading from video file
+vc = cv2.VideoCapture(input_file)
