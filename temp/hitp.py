@@ -21,10 +21,12 @@ import cv2
 from playsound import playsound
 from pydub import AudioSegment
 from pydub.playback import play
+import matplotlib.pyplot as plt
 
 
 ################################################################################
-input_file = os.path.join(os.getcwd(), "hitp.mp3")
+filename = "treasure" + ".mp3"
+input_file = os.path.join(os.getcwd(), filename)
 print(input_file)
 
 """
@@ -45,4 +47,9 @@ cv2.destroyAllWindows()
 """
 #playsound(input_file)
 sound = AudioSegment.from_mp3(input_file)
+samples = sound.get_array_of_samples()
+#print(samples)
+plt.plot(samples)
+plt.show()
 play(sound)
+
