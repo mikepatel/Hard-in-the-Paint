@@ -17,6 +17,7 @@ Notes:
 ################################################################################
 # Imports
 import os
+import numpy as np
 import cv2
 from playsound import playsound
 from pydub import AudioSegment
@@ -48,6 +49,7 @@ cv2.destroyAllWindows()
 #playsound(input_file)
 sound = AudioSegment.from_mp3(input_file)
 samples = sound.get_array_of_samples()
+samples = np.array(samples)
 print(type(samples))
 #print(samples)
 plt.plot(samples)
