@@ -10,6 +10,7 @@ Notes:
     - gif => imagemagick
     - mp4 => ffmpeg
     - https://towardsdatascience.com/animations-with-matplotlib-d96375c5442c
+    - https://github.com/jiaaro/pydub
 
 """
 
@@ -18,10 +19,13 @@ Notes:
 import os
 import cv2
 from playsound import playsound
+from pydub import AudioSegment
+from pydub.playback import play
 
 
 ################################################################################
 input_file = os.path.join(os.getcwd(), "hitp.mp3")
+print(input_file)
 
 """
 # create VideoCapture object by reading from video file
@@ -39,4 +43,6 @@ while vc.isOpened():
 vc.release()
 cv2.destroyAllWindows()
 """
-playsound(input_file)
+#playsound(input_file)
+sound = AudioSegment.from_mp3(input_file)
+play(sound)
