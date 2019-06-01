@@ -4,7 +4,7 @@ May 2019
 Python 3.6.5
 
 File Description:
-
+    Create an animation over mp4 audio file
 
 Notes:
     - gif => imagemagick
@@ -17,11 +17,13 @@ Notes:
 # Imports
 import os
 import cv2
+from playsound import playsound
 
 
 ################################################################################
-input_file = os.path.join(os.getcwd(), "hitp.mp4")
+input_file = os.path.join(os.getcwd(), "hitp.mp3")
 
+"""
 # create VideoCapture object by reading from video file
 vc = cv2.VideoCapture(input_file)
 
@@ -36,4 +38,5 @@ while vc.isOpened():
 
 vc.release()
 cv2.destroyAllWindows()
-
+"""
+playsound(input_file)
