@@ -11,6 +11,7 @@ Notes:
     - mp4 => ffmpeg
     - https://towardsdatascience.com/animations-with-matplotlib-d96375c5442c
     - https://github.com/jiaaro/pydub
+    - https://matplotlib.org/api/_as_gen/matplotlib.animation.FuncAnimation.html
 
 """
 
