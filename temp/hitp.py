@@ -18,11 +18,10 @@ Notes:
 # Imports
 import os
 import numpy as np
-import cv2
-from playsound import playsound
 from pydub import AudioSegment
 from pydub.playback import play
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 
 ################################################################################
@@ -31,22 +30,6 @@ input_file = os.path.join(os.getcwd(), filename)
 print(input_file)
 
 """
-# create VideoCapture object by reading from video file
-vc = cv2.VideoCapture(input_file)
-
-while vc.isOpened():
-    ret, frame = vc.read()
-
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-    cv2.imshow('frame', gray)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-vc.release()
-cv2.destroyAllWindows()
-"""
-#playsound(input_file)
 sound = AudioSegment.from_mp3(input_file)
 samples = sound.get_array_of_samples()
 samples = np.array(samples)
@@ -54,5 +37,34 @@ print(type(samples))
 #print(samples)
 plt.plot(samples)
 plt.show()
-play(sound)
+#play(sound)
+"""
+
+fig, ax = plt.subplots()
+x = []
+y = []
+ln, = plt.plot([], [], animated=True)
+f = np.linspace(-3, 3, 200)
+
+
+def init():
+    ax.set_xlim(-3, 3)
+    ax.set_ylim(-0.25, 2)
+    ln.set_data(x, y)
+    return ln,
+
+
+def update(frame):
+    x.append(frame)
+    y.append(np.exp(-frame*2.0))
+    ln.set_data(x, y)
+    return ln,
+
+
+anim = FuncAnimation(fig, update, frames=f, init_func=init, interval=2.5, blit=True, repeat=False)
+plt.show()
+
+
+
+
 
