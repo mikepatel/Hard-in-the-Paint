@@ -30,17 +30,16 @@ filename = "treasure" + ".mp3"
 input_file = os.path.join(os.getcwd(), filename)
 print(input_file)
 
-"""
 sound = AudioSegment.from_mp3(input_file)
 samples = sound.get_array_of_samples()
 samples = np.array(samples)
-print(type(samples))
+print(len(np.shape(samples)))  # check how many channels
 #print(samples)
 plt.plot(samples)
 plt.show()
 #play(sound)
-"""
 
+"""
 fig, ax = plt.subplots()
 x = []
 y = []
@@ -64,6 +63,7 @@ def update(frame):
 
 anim = FuncAnimation(fig, update, frames=f, init_func=init, interval=2.5, blit=True, repeat=False)
 plt.show()
+"""
 
 
 
