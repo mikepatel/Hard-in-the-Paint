@@ -44,12 +44,13 @@ plt.show()
 
 # convert music to data
 # mp3 --> wav --> data array
+
+# Read in mp3
 mp3_filename = "treasure.mp3"
 mp3_filename = os.path.join(os.getcwd(), mp3_filename)
 mp3 = pydub.AudioSegment.from_mp3(mp3_filename)
 
-
-
-
+# Convert mp3 to wav and Save wav file
+mp3.export(os.path.join(os.getcwd(), "temp.wav"), format="wav")
 
 
