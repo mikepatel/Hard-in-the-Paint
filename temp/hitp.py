@@ -20,6 +20,7 @@ Notes:
 import os
 import numpy as np
 import pydub
+import scipy.io.wavfile
 import matplotlib.pyplot as plt
 
 
@@ -52,5 +53,18 @@ mp3 = pydub.AudioSegment.from_mp3(mp3_filename)
 
 # Convert mp3 to wav and Save wav file
 mp3.export(os.path.join(os.getcwd(), "temp.wav"), format="wav")
+
+# Read in wav file
+rate, audio_data = scipy.io.wavfile.read(os.path.join(os.getcwd(), "temp.wav"))
+print("Rate: {}".format(rate))
+print("Wav audio data: {}".format(audio_data))
+
+# Get track length
+track_length = audio_data.shape[0] / rate
+print("Track length: {:.4f}s".format(track_length))
+
+# Get number of channels
+num_channels = audio_data.shape[1]
+print("Number of channels: {}".format(num_channels))
 
 
