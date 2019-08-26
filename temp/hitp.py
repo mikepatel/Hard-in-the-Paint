@@ -21,6 +21,8 @@ import os
 import numpy as np
 import pydub
 import scipy.io.wavfile
+from scipy.fftpack import fft
+import matplotlib
 import matplotlib.pyplot as plt
 
 
@@ -67,4 +69,14 @@ print("Track length: {:.4f}s".format(track_length))
 num_channels = audio_data.shape[1]
 print("Number of channels: {}".format(num_channels))
 
+# data values = amplitude of the wave (audio loudness)
+# energy of the audio
+# http://myinspirationinformation.com/uncategorized/audio-signals-in-python/
 
+# FFT
+print(matplotlib.rcParams["agg.path.chunksize"])
+matplotlib.rcParams["agg.path.chunksize"] = 10000
+print(matplotlib.rcParams["agg.path.chunksize"])
+fft_data = fft(audio_data[:, 0])
+plt.plot(audio_data, np.abs(fft_data))
+plt.show()
