@@ -68,11 +68,21 @@ print("Track length: {:.4f}s".format(track_length))
 # Get number of channels
 num_channels = audio_data.shape[1]
 print("Number of channels: {}".format(num_channels))
+left_channel = audio_data[:, 0]
+right_channel = audio_data[:, 1]
 
 # data values = amplitude of the wave (audio loudness)
-# energy of the audio
+# energy of the audio signal
 # http://myinspirationinformation.com/uncategorized/audio-signals-in-python/
+energy = np.sum(left_channel.astype(float)**2)
+print("Energy: {}".format(energy))
 
+# power of the audio signal
+# power = energy per unit of time i.e. energy per second
+power = 1.0 / (2*left_channel.size + 1) * energy / rate
+print("Power: {}".format(power))
+
+quit()
 # FFT
 print(matplotlib.rcParams["agg.path.chunksize"])
 matplotlib.rcParams["agg.path.chunksize"] = 10000
