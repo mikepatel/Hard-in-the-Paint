@@ -82,11 +82,20 @@ print("Energy: {}".format(energy))
 power = 1.0 / (2*left_channel.size + 1) * energy / rate
 print("Power: {}".format(power))
 
-quit()
+"""
+# plot the track
+time = np.arange(0, float(audio_data.shape[0]), 1) / rate
+
+# plot amplitude over time
+plt.plot(time, left_channel)
+plt.show()
+"""
+
 # FFT
 print(matplotlib.rcParams["agg.path.chunksize"])
 matplotlib.rcParams["agg.path.chunksize"] = 10000
 print(matplotlib.rcParams["agg.path.chunksize"])
 fft_data = fft(audio_data[:, 0])
-plt.plot(audio_data, np.abs(fft_data))
+abs_fft_data = np.abs(fft_data)
+plt.plot(audio_data, abs_fft_data)
 plt.show()
